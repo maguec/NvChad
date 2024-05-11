@@ -7,9 +7,7 @@ local map = vim.keymap.set
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 
-map("n", "<leader>fmt", function()
-  return vim.fn["neoformat#format"]()
-end, { desc = "Neoformat" })
+map("n", "<leader>fmt", "<cmd>lua vim.lsp.buf.format()<CR>", { desc = "lsp format" })
 
 vim.cmd "command WQ wq"
 vim.cmd "command Wq wq"
