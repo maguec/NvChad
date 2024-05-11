@@ -8,8 +8,8 @@ return {
   },
 
   {
-	  "godlygeek/tabular",
-    lazy = false,       -- Normally not a good idea - but Tabularize is used everywhere
+    "godlygeek/tabular",
+    lazy = false, -- Normally not a good idea - but Tabularize is used everywhere
   },
 
   {
@@ -19,72 +19,119 @@ return {
   },
 
   {
-    "nvim-neorg/neorg",   -- install locally just to make sure : luarocks install neorg --local
+    "nvim-neorg/neorg", -- install locally just to make sure : luarocks install neorg --local
     dependencies = { "luarocks.nvim" },
-    lazy    = false,      -- Disable lazy loading 
-    version = "*",        -- Pin Neorg to the latest stable release
-    config  = function()
-      require("neorg").setup({ load = {
-        ["core.defaults"] = {},
-        ["core.concealer"] = {},
-        ["core.dirman"] = {
-          config = {
-            workspace = {
-              default = "~/neorg",
+    lazy = false, -- Disable lazy loading
+    version = "*", -- Pin Neorg to the latest stable release
+    config = function()
+      require("neorg").setup {
+        load = {
+          ["core.defaults"] = {},
+          ["core.concealer"] = {},
+          ["core.dirman"] = {
+            config = {
+              workspace = {
+                default = "~/neorg",
+              },
+              index = "index.norg",
             },
-            index = "index.norg",
           },
-        }
-      }})
-    end
-  },
-
-   {
-     "neovim/nvim-lspconfig",
-     config = function()
-       require("nvchad.configs.lspconfig").defaults()
-       require "configs.lspconfig"
-     end,
-   },
-
-   {
-   	"williamboman/mason.nvim",
-   	opts = {
-   		ensure_installed = {
-   			"lua-language-server",
-        "gopls",
-   		},
-   	},
-   },
-
-  {
-    "vimwiki/vimwiki",
-    lazy = false,       -- Normally not a good idea - but vimwiki is used everywhere
-    init = function()
-      vim.g.vimwiki_list = {
-        {
-          path   = '~/Documents/VimWiki/tech.wiki/',
-          syntax = 'default',
-          ext    = '.wiki'
-        },
-        {
-          path   = "~/Code/Google/VimWiki/",
-          syntax = "markdown",
-          ext    = ".md"
         },
       }
     end,
   },
 
   {
- 	"nvim-treesitter/nvim-treesitter",
- 	opts = {
- 		ensure_installed = {
- 			  "vim", "lua", "vimdoc",
-        "terraform",
-        "html", "css", "go", "python"
- 		},
- 	},
- },
+    "neovim/nvim-lspconfig",
+    config = function()
+      require("nvchad.configs.lspconfig").defaults()
+      require "configs.lspconfig"
+    end,
+  },
 
+  {
+    "williamboman/mason.nvim",
+    opts = {
+      ensure_installed = {
+        "lua-language-server",
+        "gopls",
+        "pyright",
+        "mypy",
+        "ruff",
+      },
+    },
+  },
+
+  {
+    "vimwiki/vimwiki",
+    lazy = false, -- Normally not a good idea - but vimwiki is used everywhere
+    init = function()
+      vim.g.vimwiki_list = {
+        {
+          path = "~/Documents/VimWiki/tech.wiki/",
+          syntax = "default",
+          ext = ".wiki",
+        },
+        {
+          path = "~/Code/Google/VimWiki/",
+          syntax = "markdown",
+          ext = ".md",
+        },
+      }
+    end,
+  },
+
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "vim",
+        "lua",
+        "vimdoc",
+        "terraform",
+        "markdown",
+        "markdown_inline",
+        "html",
+        "css",
+        "go",
+        "python",
+      },
+    },
+  },
+  {
+    "olexsmir/gopher.nvim",
+    dependencies = {
+      "neovim/nvim-lspconfig",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    config = function()
+      require("gopher").setup()
+    end,
+    event = { "CmdlineEnter" },
+    ft = { "go", "gomod" },
+  },
+
+  {
+    "Exafunction/codeium.vim",
+    event = "BufEnter",
+    config = function()
+      vim.keymap.set("i", "<C-g>", function()
+        return vim.fn["codeium#Accept"]()
+      end, { expr = true })
+      vim.keymap.set("i", "<c-;>", function()
+        return vim.fn["codeium#CycleCompletions"](1)
+      end, { expr = true })
+      vim.keymap.set("i", "<c-,>", function()
+        return vim.fn["codeium#CycleCompletions"](-1)
+      end, { expr = true })
+      vim.keymap.set("i", "<c-x>", function()
+        return vim.fn["codeium#Clear"]()
+      end, { expr = true })
+    end,
+  },
+
+  {
+    "sbdchd/neoformat",
+    event = "BufEnter",
+  },
 }
