@@ -46,6 +46,25 @@ return {
    },
 
   {
+    "vimwiki/vimwiki",
+    lazy = false,       -- Normally not a good idea - but vimwiki is used everywhere
+    init = function()
+      vim.g.vimwiki_list = {
+        {
+          path   = '~/Documents/VimWiki/tech.wiki/',
+          syntax = 'default',
+          ext    = '.wiki'
+        },
+        {
+          path   = "~/Code/Google/VimWiki/",
+          syntax = "markdown",
+          ext    = ".md"
+        },
+      }
+    end,
+  },
+
+  {
  	"nvim-treesitter/nvim-treesitter",
  	opts = {
  		ensure_installed = {
