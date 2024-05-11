@@ -23,22 +23,20 @@ return {
     dependencies = { "luarocks.nvim" },
     lazy = false, -- Disable lazy loading
     version = "*", -- Pin Neorg to the latest stable release
-    config = function()
-      require("neorg").setup {
-        load = {
-          ["core.defaults"] = {},
-          ["core.concealer"] = {},
-          ["core.dirman"] = {
-            config = {
-              workspace = {
-                default = "~/neorg",
-              },
-              index = "index.norg",
+    opts = {
+      load = {
+        ["core.defaults"] = {}, -- Loads default behaviour
+        ["core.concealer"] = { config = { icon_preset = "diamond" } }, -- Adds pretty icons to your documents
+        ["core.dirman"] = { -- Manages Neorg workspaces
+          config = {
+            workspaces = {
+              notes = "~/Documents/VimWiki/neorg",
             },
+            default_workspace = "notes",
           },
         },
-      }
-    end,
+      },
+    },
   },
 
   {
