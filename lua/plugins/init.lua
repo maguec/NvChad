@@ -17,13 +17,25 @@ return {
     priority = 1000,
     config = true,
   },
+
   {
     "nvim-neorg/neorg",   -- install locally just to make sure : luarocks install neorg --local
     dependencies = { "luarocks.nvim" },
-    lazy = false, -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
-    version = "*", -- Pin Neorg to the latest stable release
-    config = function ()
-      require("neorg").setup({})
+    lazy    = false,      -- Disable lazy loading 
+    version = "*",        -- Pin Neorg to the latest stable release
+    config  = function()
+      require("neorg").setup({ load = {
+        ["core.defaults"] = {},
+        ["core.concealer"] = {},
+        ["core.dirman"] = {
+          config = {
+            workspace = {
+              default = "~/neorg",
+            },
+            index = "index.norg",
+          },
+        }
+      }})
     end
   },
 
