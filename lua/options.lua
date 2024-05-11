@@ -13,6 +13,9 @@ o.signcolumn = "yes:2"
 o.cursorline = true
 o.mouse = ""
 
+-- Better for Neorg setup
+o.conceallevel = 3
+
 -- neovide only settings
 if vim.g.neovide then
   o.guifont = "DroidSansM Nerd Font Mono:h14"

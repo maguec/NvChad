@@ -26,7 +26,12 @@ return {
     opts = {
       load = {
         ["core.defaults"] = {}, -- Loads default behaviour
-        ["core.concealer"] = { config = { icon_preset = "diamond" } }, -- Adds pretty icons to your documents
+        ["core.concealer"] = {
+          config = {
+            icon_preset = "diamond",
+            folds = false,
+          },
+        },
         ["core.dirman"] = { -- Manages Neorg workspaces
           config = {
             workspaces = {
