@@ -28,3 +28,15 @@ if vim.g.neovide then
   vim.api.nvim_set_keymap("n", "<Home>", '"+p', { noremap = true, silent = true })
   vim.api.nvim_set_keymap("i", "<Home>", '"+p', { noremap = true, silent = true })
 end
+
+-- My custom autocnfig
+vim.api.nvim_create_augroup("custom_buffers", { clear = true })
+
+-- configs/autocmd.lua
+vim.api.nvim_create_autocmd("TextYankPost", {
+	group = "custom_buffers",
+	pattern = "*",
+	callback = function()
+		vim.highlight.on_yank { timeout = 200 }
+	end,
+})
