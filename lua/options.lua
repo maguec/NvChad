@@ -31,12 +31,24 @@ end
 
 -- My custom autocnfig
 vim.api.nvim_create_augroup("custom_buffers", { clear = true })
+vim.api.nvim_create_augroup("wiki_buffers", { clear = true })
 
--- configs/autocmd.lua
+-- configs/all_files_autocmd
 vim.api.nvim_create_autocmd("TextYankPost", {
 	group = "custom_buffers",
 	pattern = "*",
 	callback = function()
 		vim.highlight.on_yank { timeout = 200 }
+	end,
+})
+
+-- configs/wiki_buffers
+vim.api.nvim_create_autocmd("BufRead", {
+	group = "wiki_buffers",
+	pattern = {"*.md", "*.wiki", "*.norg"},
+	callback = function()
+		vim.wo.number = false
+		vim.wo.relativenumber = false
+		vim.wo.signcolumn = "no"
 	end,
 })
