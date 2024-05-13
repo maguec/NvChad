@@ -117,6 +117,7 @@ return {
   {
     "Exafunction/codeium.vim",
     event = "BufEnter",
+    enabled = vim.fn.has("linux") == 1,
     config = function()
       vim.keymap.set("i", "<C-g>", function()
         return vim.fn["codeium#Accept"]()
