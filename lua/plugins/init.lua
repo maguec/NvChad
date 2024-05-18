@@ -139,7 +139,7 @@ return {
     event = "BufEnter",
   },
   {
-    "natecraddock/workspaces.nvim",
+    "natecraddock/workspaces.nvim", -- config stored in ~/.local/share/<NVIM_APPNAME>/workspaces
     lazy = false, -- Disable lazy loading
     config = function()
       vim.keymap.set("n", "<leader>wo", "<cmd>lua require('workspaces').open()<CR>", { desc = "Open Workspace" })
