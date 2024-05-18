@@ -13,6 +13,7 @@ vim.cmd "command WQ wq"
 vim.cmd "command Wq wq"
 vim.cmd "command W w"
 
+
 -- custom
 local myfunctions = require "custom.myfunctions"
 vim.keymap.set('n', '<leader>tt', myfunctions.togglenums, {})

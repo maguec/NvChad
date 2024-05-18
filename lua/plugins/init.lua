@@ -117,7 +117,7 @@ return {
   {
     "Exafunction/codeium.vim",
     event = "BufEnter",
-    enabled = vim.fn.has("linux") == 1,
+    enabled = vim.fn.has "linux" == 1,
     config = function()
       vim.keymap.set("i", "<C-g>", function()
         return vim.fn["codeium#Accept"]()
@@ -137,5 +137,17 @@ return {
   {
     "sbdchd/neoformat",
     event = "BufEnter",
+  },
+  {
+    "natecraddock/workspaces.nvim",
+    lazy = false, -- Disable lazy loading
+    config = function()
+      vim.keymap.set("n", "<leader>wo", "<cmd>lua require('workspaces').open()<CR>", { desc = "Open Workspace" })
+      require("workspaces").setup {
+        hooks = {
+          open = { "Telescope find_files" },
+        },
+      }
+    end,
   },
 }
