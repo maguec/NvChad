@@ -139,6 +139,19 @@ return {
     event = "BufEnter",
   },
   {
+    'MeanderingProgrammer/render-markdown.nvim',
+    opts = {},
+    lazy = false,
+    --dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
+    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+    overrides = {
+      buftype = {
+            vimwiki = { sign = { enabled = false } },
+        },
+    },
+  },
+  {
     "natecraddock/workspaces.nvim", -- config stored in ~/.local/share/<NVIM_APPNAME>/workspaces
     lazy = false, -- Disable lazy loading
     config = function()
