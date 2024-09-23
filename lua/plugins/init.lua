@@ -69,6 +69,7 @@ return {
     "vimwiki/vimwiki",
     lazy = false, -- Normally not a good idea - but vimwiki is used everywhere
     init = function()
+      vim.g.vimwiki_global_ext = 0
       vim.g.vimwiki_list = {
         {
           path = "~/Documents/VimWiki/tech.wiki/",
@@ -131,6 +132,11 @@ return {
       vim.keymap.set("i", "<c-x>", function()
         return vim.fn["codeium#Clear"]()
       end, { expr = true })
+      vim.g.codeium_filetypes = {
+        markdown = false,
+        vimwiki = false,
+        neorg = false,
+      }
     end,
   },
 
