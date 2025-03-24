@@ -17,3 +17,6 @@ vim.cmd "command W w"
 -- custom
 local myfunctions = require "custom.myfunctions"
 vim.keymap.set('n', '<leader>tt', myfunctions.togglenums, {})
+
+local datedfile = require "custom.datedfile"
+vim.keymap.set('n', '<leader>df', datedfile.create_dated_file, {})
