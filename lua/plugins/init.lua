@@ -32,6 +32,7 @@ return {
     opts = {
       load = {
         ["core.defaults"] = {}, -- Loads default behaviour
+        ["core.looking-glass"] = {}, -- Loads default behaviour
         ["core.concealer"] = {
           config = {
             icon_preset = "diamond",
