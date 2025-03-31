@@ -68,6 +68,7 @@ return {
         "pyright",
         "mypy",
         "ruff",
+        "sqls",
       },
     },
   },
