@@ -196,6 +196,18 @@ return {
     end,
   },
   {
+    "benomahony/uv.nvim",
+    ft = { "python" },
+    opts = {
+      picker_integration = true,
+    },
+    config = function()
+      require("uv").setup({
+        prefix = "<leader>U",
+      })
+    end
+  },
+  {
     "folke/snacks.nvim",
     priority = 1000,
     lazy = false,
