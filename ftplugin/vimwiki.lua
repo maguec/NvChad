@@ -3,4 +3,5 @@ vim.wo.number = false
 vim.wo.relativenumber = false
 vim.wo.signcolumn = "no"
 vim.cmd([[autocmd BufUnload * execute ':silent !git add % && git commit -m %']])
-vim.cmd("setlocal spell spelllang=en_us")
+vim.opt.spell = true
+vim.opt.spelllang = "en_us"
