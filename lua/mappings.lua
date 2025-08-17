@@ -20,3 +20,6 @@ vim.keymap.set('n', '<leader>tt', myfunctions.togglenums, {})
 
 local datedfile = require "custom.datedfile"
 vim.keymap.set('n', '<leader>df', datedfile.create_dated_file, {})
+
+vim.keymap.set('n', '<C-]>', '<cmd>bnext<CR>', { noremap = true, silent = true, desc = 'Next buffer' })
+vim.keymap.set('n', '<C-[>', ':bprevious<CR>', { noremap = true, silent = true, desc = 'Previous buffer' })
