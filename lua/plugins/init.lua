@@ -124,27 +124,15 @@ return {
   },
 
   {
-    "Exafunction/codeium.vim",
-    event = "BufEnter",
+    "TabbyML/vim-tabby",
+    lazy = false,
     enabled = vim.fn.has "linux" == 1,
-    config = function()
-      vim.keymap.set("i", "<C-g>", function()
-        return vim.fn["codeium#Accept"]()
-      end, { expr = true })
-      vim.keymap.set("i", "<c-;>", function()
-        return vim.fn["codeium#CycleCompletions"](1)
-      end, { expr = true })
-      vim.keymap.set("i", "<c-,>", function()
-        return vim.fn["codeium#CycleCompletions"](-1)
-      end, { expr = true })
-      vim.keymap.set("i", "<c-x>", function()
-        return vim.fn["codeium#Clear"]()
-      end, { expr = true })
-      vim.g.codeium_filetypes = {
-        markdown = false,
-        vimwiki = false,
-        neorg = false,
-      }
+    dependencies = {
+      "neovim/nvim-lspconfig",
+    },
+    init = function()
+      vim.g.tabby_agent_start_command = {"npx", "tabby-agent", "--stdio"}
+      vim.g.tabby_inline_completion_trigger = "auto"
     end,
   },
 
