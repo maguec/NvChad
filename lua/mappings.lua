@@ -23,3 +23,9 @@ vim.keymap.set('n', '<leader>df', datedfile.create_dated_file, {})
 
 vim.keymap.set('n', '<C-]>', '<cmd>bnext<CR>', { noremap = true, silent = true, desc = 'Next buffer' })
 vim.keymap.set('n', '<C-[>', ':bprevious<CR>', { noremap = true, silent = true, desc = 'Previous buffer' })
+
+-- Disable Tabby's default <Tab> mapping
+vim.g.tabby_no_default_keymaps = 1
+vim.g.tabby_inline_completion_keybinding_accept = "<C-g>"
+vim.g.tabby_inline_completion_keybinding_trigger_or_dismiss = "<C-u>"
+
