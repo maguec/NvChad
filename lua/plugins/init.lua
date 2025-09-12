@@ -43,6 +43,7 @@ return {
           config = {
             workspaces = {
               notes = "~/Documents/VimWiki/neorg",
+              journal = "~/Documents/journal"
             },
             default_workspace = "notes",
           },
